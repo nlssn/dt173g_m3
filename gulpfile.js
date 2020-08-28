@@ -8,10 +8,15 @@ const terser = require('gulp-terser');
 const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
 const del = require('del');
+const gulpSass = require('gulp-sass');
+
+/* Set up SASS default compiler */
+sass.compiler = require('node.sass');
 
 /* Set paths as consts for easy access */
 const htmlPath = 'src/*html';
-const stylesPath = 'src/assets/css/**/*.css';
+const sassPath = 'src/assets/sass/**/*.scss';
+const cssPath = 'src/assets/css/**/*.css';
 const scriptsPath = 'src/assets/js/**/*.js';
 const imagesPath = 'src/assets/images/*';
 
@@ -34,7 +39,19 @@ function html() {
 }
 
 /*
- * TASK: styles
+ * TASK: sass
+ * Transpile SASS files to CSS.
+ * Place new files in cssPath, which will trigger css task.
+ */
+
+function sass() {
+   return src(sassPath)
+      .pipe(gulpSass().on('error', gulpSass.logError))
+      .pipe(dest(cssPath));
+}
+
+/*
+ * TASK: css
  * First concatenate all CSS files into one file.
  * Use postcss to simoultaneously;
  *  - add vendor prefixes with autoprefixer
@@ -42,8 +59,8 @@ function html() {
  * Then move the new file to dist.
  * Finally tell bSync to inject the new styles.
  */
-function styles() {
-   return src(stylesPath)
+function css() {
+   return src(cssPath)
       .pipe(concat('global.css'))
       .pipe(postcss([autoprefixer(), cssnano()]))
       .pipe(dest('dist/assets/css'))
@@ -88,7 +105,8 @@ function serve() {
    });
    
    watch([htmlPath], { intervall: 1000 }, html);
-   watch([stylesPath], { intervall: 1000 }, styles);
+   watch([sassPath], { intervall: 1000 }, sass);
+   watch([cssPath], { intervall: 1000 }, css);
    watch([scriptsPath], {intervall: 1000 }, scripts);
    watch([imagesPath], {intervall: 1000 }, images);
 }
@@ -96,10 +114,10 @@ function serve() {
 /* Export all public tasks - type gulp <task> to use */
 exports.clean = clean;
 exports.html = html;
-exports.styles = styles;
+exports.css = css;
 exports.scripts = scripts;
 exports.images = images;
 exports.serve = serve;
 
 /* Export default command - type gulp to use */
-exports.default = series(clean, parallel(html, styles, scripts, images), serve);
+exports.default = series(clean, parallel(html, css, scripts, images), serve);
