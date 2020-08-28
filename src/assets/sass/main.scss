@@ -1,0 +1,13 @@
+/* Import all the modules */
+@import 'reset';
+@import 'base';
+@import 'layout';
+@import 'component';
+
+$font-stack: Arial, Helvetica, sans-serif;
+
+.colors {
+   font-family: $font-stack;
+   color: red;
+   background-color: black;
+}

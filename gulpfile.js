@@ -11,7 +11,7 @@ const del = require('del');
 const gulpSass = require('gulp-sass');
 
 /* Set up SASS default compiler */
-sass.compiler = require('node.sass');
+//gulpSass.compiler = require('node-sass');
 
 /* Set paths as consts for easy access */
 const htmlPath = 'src/*html';
@@ -46,8 +46,8 @@ function html() {
 
 function sass() {
    return src(sassPath)
-      .pipe(gulpSass().on('error', gulpSass.logError))
-      .pipe(dest(cssPath));
+      .pipe(gulpSass.sync().on('error', gulpSass.logError))
+      .pipe(dest('src/assets/css'));
 }
 
 /*
@@ -118,6 +118,7 @@ exports.css = css;
 exports.scripts = scripts;
 exports.images = images;
 exports.serve = serve;
+exports.sass = sass;
 
 /* Export default command - type gulp to use */
-exports.default = series(clean, parallel(html, css, scripts, images), serve);
+exports.default = series(clean, parallel(html, sass, scripts, images), serve);
