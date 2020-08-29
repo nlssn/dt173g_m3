@@ -1,13 +1,5 @@
-/* Import all the modules */
+/* Import all the partials */
 @import 'reset';
 @import 'base';
 @import 'layout';
 @import 'component';
-
-$font-stack: Arial, Helvetica, sans-serif;
-
-.colors {
-   font-family: $font-stack;
-   color: red;
-   background-color: black;
-}
