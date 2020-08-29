@@ -51,6 +51,7 @@ function styles() {
    return src(stylesPath)
       .pipe(gulpSass.sync().on('error', gulpSass.logError))
       .pipe(postcss([autoprefixer(), cssnano()]))
+      .pipe(rename('global.min.css'))
       .pipe(dest('dist/assets/css'))
       .pipe(browserSync.stream());
 }
@@ -66,6 +67,7 @@ function scripts() {
    return src(scriptsPath)
       .pipe(concat('global.js'))
       .pipe(terser())
+      .pipe(rename('global.min.js'))
       .pipe(dest('dist/assets/js'))
       .pipe(browserSync.stream());
 }
