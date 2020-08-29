@@ -15,8 +15,7 @@ const gulpSass = require('gulp-sass');
 
 /* Set paths as consts for easy access */
 const htmlPath = 'src/*html';
-const sassPath = 'src/assets/sass/**/*.scss';
-const cssPath = 'src/assets/css/**/*.css';
+const stylesPath = 'src/assets/sass/**/*.scss';
 const scriptsPath = 'src/assets/js/**/*.js';
 const imagesPath = 'src/assets/images/*';
 
@@ -39,29 +38,17 @@ function html() {
 }
 
 /*
- * TASK: sass
+ * TASK: styles
  * Transpile SASS files to CSS.
- * Place new files in cssPath, which will trigger css task.
- */
-
-function sass() {
-   return src(sassPath)
-      .pipe(gulpSass.sync().on('error', gulpSass.logError))
-      .pipe(dest('src/assets/css'));
-}
-
-/*
- * TASK: css
- * First concatenate all CSS files into one file.
  * Use postcss to simoultaneously;
  *  - add vendor prefixes with autoprefixer
  *  - minify the code with cssnano
  * Then move the new file to dist.
  * Finally tell bSync to inject the new styles.
  */
-function css() {
-   return src(cssPath)
-      .pipe(concat('global.css'))
+function styles() {
+   return src(stylesPath)
+      .pipe(gulpSass.sync().on('error', gulpSass.logError))
       .pipe(postcss([autoprefixer(), cssnano()]))
       .pipe(dest('dist/assets/css'))
       .pipe(browserSync.stream());
@@ -105,8 +92,7 @@ function serve() {
    });
    
    watch([htmlPath], { intervall: 1000 }, html);
-   watch([sassPath], { intervall: 1000 }, sass);
-   watch([cssPath], { intervall: 1000 }, css);
+   watch([stylesPath], { intervall: 1000 }, styles);
    watch([scriptsPath], {intervall: 1000 }, scripts);
    watch([imagesPath], {intervall: 1000 }, images);
 }
@@ -114,11 +100,10 @@ function serve() {
 /* Export all public tasks - type gulp <task> to use */
 exports.clean = clean;
 exports.html = html;
-exports.css = css;
+exports.styles = styles;
 exports.scripts = scripts;
 exports.images = images;
 exports.serve = serve;
-exports.sass = sass;
 
 /* Export default command - type gulp to use */
-exports.default = series(clean, parallel(html, sass, scripts, images), serve);
+exports.default = series(clean, parallel(html, styles, scripts, images), serve);
