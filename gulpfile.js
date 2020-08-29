@@ -1,6 +1,7 @@
 /* Load the required modules */
 const { src, dest, series, parallel, watch } = require('gulp');
 const concat = require('gulp-concat');
+const rename = require('gulp-rename');
 const postcss = require('gulp-postcss');
 const cssnano = require('cssnano');
 const autoprefixer = require('autoprefixer');
