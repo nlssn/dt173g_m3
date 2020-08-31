@@ -1,14 +1,16 @@
-// Colors
-$brand: orange;
-$bg: #f2f2f2;
-$body-copy: #222222;
-
-// Fonts
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;700;900&display=swap');
 $font-stack: 'Mulish', Arial, Helvetica, sans-serif;
 
+/* Colors*/
+$brand: orange;
+$bg: #f1f1f1;
+$body-copy: #222222;
+
 body {
-   font-family: $font-stack;
-   color: $body-copy;
    background-color: $bg;
+}
+
+.site-header {
+   background-color: pink;
 }
