@@ -5,12 +5,27 @@ $font-stack: 'Mulish', Arial, Helvetica, sans-serif;
 /* Colors*/
 $brand: orange;
 $bg: #f1f1f1;
-$body-copy: #222222;
+$body-copy: #333;
 
 body {
    background-color: $bg;
 }
 
 .site-header {
-   background-color: pink;
+   background-color: #314570;
+   border-bottom: 5px solid lighten(#314570, 25);
+   color: lighten(#314570, 50);
+}
+
+.site-header h1 {
+   color: #ffffff;
+}
+
+header, main, section, footer {
+   padding: 2em 0;
+}
+
+.site-footer {
+   border-top: 1px dotted darken($color: $bg, $amount: 25);
+   background-color: darken($color: $bg, $amount: 5);
 }

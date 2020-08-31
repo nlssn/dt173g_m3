@@ -3,14 +3,23 @@ body {
    color: $body-copy;
    font-size: 16px;
    line-height: 1.4;
+   font-weight: 300;
 }
 
 h1 {
-
+   font-weight: 900;
+   font-size: 2em;
 }
 
 h2 {
+   font-weight: 900;
+   font-size: 1.7em;
+   color: #000;
+}
 
+h3 {
+   font-weight: 700;
+   color: #E09873;
 }
 
 p {
@@ -20,4 +29,66 @@ p {
 a {
    color: inherit;
    text-decoration: none;
+}
+
+b, strong {
+   font-weight: 700;
+}
+
+img {
+   width: 100%;
+   margin: 1.5em 0 2em 0;
+   border: 1px solid #ccc;
+   padding: .25em;
+   background: #fff;
+   box-shadow: 0 0 10px 1px #ccc;
+}
+
+.primary-nav {
+   ul {
+      list-style:none;
+      li {
+         display: inline;
+         padding: 0 .25em;
+         &:first-of-type {
+            padding-left: 0;
+         }
+         &:last-of-type {
+            padding-right: 0;
+         }
+         a {
+            &:hover {
+               color: #fff;
+               border-bottom: 1px solid #fff;
+            }
+         }
+         
+      }
+   }
+}
+
+.page-content a {
+   border-bottom: 1px dotted lighten($body-copy, 50);
+   &:hover {
+      border-bottom: 1px solid $body-copy;
+   }
+}
+
+
+.site-footer {
+   font-size: .8em;
+   text-align: center;
+}
+
+
+@media only screen and (min-width: 800px) {
+   body {
+      font-size: 1.05em;
+   }
+}
+
+@media only screen and (min-width: 1920px) {
+   body {
+      font-size: 1.2em;
+   }
 }
