@@ -3,30 +3,25 @@
 $font-stack: 'Mulish', Arial, Helvetica, sans-serif;
 
 /* Colors*/
-$brand: orange;
-$bg: #f1f1f1;
-$body-copy: #333;
+$brandPrimary: #314570;
+$brandSecondary: #ec8d11;
+$neutralDarkest: #000000;
+$neutralDarker: #333333;
+$neutralDark: #b1b1b1;
+$neutral: #cccccc;
+$neutralLight: #e4e4e4;
+$neutralLighter: #f2f2f2;
+$neutralLightest: #ffffff;
 
 /* Media queries mixin */
 @mixin breakpoint($point) {
-   @if $point == papa-bear {
-      @media (max-width: 1600px) { @content; }
+   @if $point == S {
+      @media only screen and (min-width: 560px) { @content; }
    }
-}
-
-
-/* Base stuff */
-body {
-   background-color: $bg;
-}
-
-.site-header {
-   background-color: #314570;
-   border-bottom: 5px solid lighten(#314570, 25);
-   color: lighten(#314570, 50);
-}
-
-.site-footer {
-   border-top: 1px dotted darken($color: $bg, $amount: 25);
-   background-color: darken($color: $bg, $amount: 5);
+   @if $point == M {
+      @media only screen and (min-width: 750px) { @content; }
+   }
+   @if $point == L {
+      @media only screen and (min-width: 1920px) { @content; }
+   }
 }
