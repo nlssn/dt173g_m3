@@ -1,5 +1,21 @@
-header, main, section, footer {
+body {
+   background-color: $neutralLighter;
+}
+
+main, section {
+   margin-bottom: 2em;
+}
+
+.site-header {
+   background-color: $brandPrimary;
+   border-bottom: 5px solid lighten($brandPrimary, 25);
+   color: lighten($brandPrimary, 50);
    padding: 2em 0;
+   margin-bottom: 2em;
+}
+
+.cta {
+   text-align: center;
 }
 
 .container {
@@ -9,18 +25,19 @@ header, main, section, footer {
 .wrap {
    padding: 0 5%;
    margin: 0 auto;
-}
-
-@media only screen and (min-width: 800px) {
-   .wrap {
-      padding: 0;
-      width: 700px;
+   @include breakpoint(S) {
+      width: 90%;
+   }
+   @include breakpoint(M) {
+      width: 750px;
+   }
+   @include breakpoint(L) {
+      width: 960px;
    }
 }
 
-
-@media only screen and (min-width: 1920px) {
-   .wrap {
-      width: 800px;
-   }
+.site-footer {
+   padding: 2em 0;
+   border-top: 1px dotted $neutral;
+   background-color: $neutralLight;
 }
