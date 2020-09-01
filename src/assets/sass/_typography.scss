@@ -1,9 +1,15 @@
 body {
    font-family: $font-stack;
-   color: $body-copy;
+   color: $neutralDarker;
    font-size: 16px;
    line-height: 1.4;
    font-weight: 300;
+   @include breakpoint(M) {
+      font-size: 1.05em;
+   }
+   @include breakpoint(L) {
+      font-size: 1.15em;
+   }
 }
 
 h1 {
@@ -21,7 +27,7 @@ h2 {
 
 h3 {
    font-weight: 700;
-   color: #bd3383;
+   color: $brandSecondary;
 }
 
 p {
@@ -40,10 +46,10 @@ b, strong {
 img {
    width: 100%;
    margin: 1.5em 0 2em 0;
-   border: 1px solid #ccc;
+   border: 1px solid $neutral;
    padding: .25em;
-   background: #fff;
-   box-shadow: 0 0 10px 1px #ccc;
+   background: $neutralLightest;
+   box-shadow: 0 0 10px 1px $neutral;
 }
 
 .primary-nav {
@@ -60,8 +66,8 @@ img {
          }
          a {
             &:hover {
-               color: #fff;
-               border-bottom: 1px solid #fff;
+               color: $neutralLightest;
+               border-bottom: 1px solid $neutralLightest;
             }
          }
          
@@ -70,28 +76,15 @@ img {
 }
 
 .page-content a {
-   color: #bd3383;
-   border-bottom: 1px dotted lighten($body-copy, 50);
+   color: $brandSecondary;
+   border-bottom: 1px dotted $brandSecondary;
    &:hover {
-      border-bottom: 1px solid $body-copy;
+      color: $neutralDarker;
+      border-bottom: 1px solid $neutralDarker;
    }
 }
-
 
 .site-footer {
    font-size: .8em;
    text-align: center;
-}
-
-
-@media only screen and (min-width: 800px) {
-   body {
-      font-size: 1.05em;
-   }
-}
-
-@media only screen and (min-width: 1920px) {
-   body {
-      font-size: 1.2em;
-   }
 }
