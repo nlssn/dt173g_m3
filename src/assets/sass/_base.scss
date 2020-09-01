@@ -7,6 +7,15 @@ $brand: orange;
 $bg: #f1f1f1;
 $body-copy: #333;
 
+/* Media queries mixin */
+@mixin breakpoint($point) {
+   @if $point == papa-bear {
+      @media (max-width: 1600px) { @content; }
+   }
+}
+
+
+/* Base stuff */
 body {
    background-color: $bg;
 }
@@ -15,14 +24,6 @@ body {
    background-color: #314570;
    border-bottom: 5px solid lighten(#314570, 25);
    color: lighten(#314570, 50);
-}
-
-.site-header h1 {
-   color: #ffffff;
-}
-
-header, main, section, footer {
-   padding: 2em 0;
 }
 
 .site-footer {

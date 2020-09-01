@@ -1,3 +1,7 @@
+header, main, section, footer {
+   padding: 2em 0;
+}
+
 .container {
    width: 100%;
 }
@@ -17,6 +21,6 @@
 
 @media only screen and (min-width: 1920px) {
    .wrap {
-      width: 960px;
+      width: 800px;
    }
 }
