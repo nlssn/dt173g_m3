@@ -1,4 +1,4 @@
-# DT173G, Moment 2
+# DT173G, Moment 3
 
 ## Syfte
 Syftet med denna uppgift är att bygga vidare på [den föregående uppgiften](https://github.com/nlssn/dt173g_m2) och lägga till stöd för SASS. Nödvändiga förändringar i  `tasks`har gjorts, samt att följande paket har lagts till:
